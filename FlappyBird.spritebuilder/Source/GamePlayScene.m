@@ -9,6 +9,7 @@
     // your code here
     character = (Character*)[CCBReader load:@"Character"];
     [physicsNode addChild:character];
+    [self addObstacle];
 }
 
 -(void)update:(CCTime)delta
@@ -20,6 +21,13 @@
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     // this will get called every time the player touches the screen
     [character flap];
+    
+    // to declare a method that returns an array and accepts multiple strings
+    //
+    
 }
 
+//- (NSArray *) addThisStringToAnArray:(NSString*) firstString andThisString:(NSString *) secondString andAlsoThisString:(NSString *) thirdString {
+//    return [NSArray arrayWithObjects: firstString, secondString, thirdString, nil];
+//}
 @end
