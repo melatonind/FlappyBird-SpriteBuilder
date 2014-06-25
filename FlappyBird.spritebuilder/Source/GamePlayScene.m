@@ -9,12 +9,26 @@
     // your code here
     character = (Character*)[CCBReader load:@"Character"];
     [physicsNode addChild:character];
+    timeSinceObstacle = 0.0f;
     [self addObstacle];
 }
 
 -(void)update:(CCTime)delta
 {
-    // put update code here
+    // this will be run every frame.
+    // delta is the time that has elapsed since the last time it was run. This is usually 1/60, but can be bigger if the game slows down
+    
+    // Increment the time since the last obstacle was added
+    timeSinceObstacle += delta;
+    
+    // Check to see if two seconds have passed
+    if (timeSinceObstacle > 2.0f) {
+        // Add a new obstacle
+        [self addObstacle];
+        
+        // Then reset the timer
+        timeSinceObstacle = 0.0f;
+    }
 }
 
 // put new methods here
@@ -22,10 +36,8 @@
     // this will get called every time the player touches the screen
     [character flap];
     
-    // to declare a method that returns an array and accepts multiple strings
-    //
-    
 }
+// to declare a method that returns an array and accepts multiple strings
 
 //- (NSArray *) addThisStringToAnArray:(NSString*) firstString andThisString:(NSString *) secondString andAlsoThisString:(NSString *) thirdString {
 //    return [NSArray arrayWithObjects: firstString, secondString, thirdString, nil];
